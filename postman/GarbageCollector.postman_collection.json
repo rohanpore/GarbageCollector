@@ -1,0 +1,317 @@
+{
+	"info": {
+		"_postman_id": "278d4845-fa7f-471e-8fab-b11c03428b90",
+		"name": "GarbageCollector",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47276230",
+		"_collection_link": "https://rohanpore-5054259.postman.co/workspace/rohanpore's-Workspace~45bd43cb-8d3a-4889-8df2-cb3f17b36978/collection/47276230-278d4845-fa7f-471e-8fab-b11c03428b90?action=share&source=collection_link&creator=47276230"
+	},
+	"item": [
+		{
+			"name": "consumer-services",
+			"item": [
+				{
+					"name": "sing-up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1002,\r\n    \"name\": \"Miss Jody Torp\",\r\n    \"email\": \"Glenn Fahey V@gmail.com\",\r\n    \"contact\": \"052-495-7270\",\r\n    \"location\": \"5418 Traci Station, East Keirafurt, OR 89709\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/garbage-collector/signUp",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"garbage-collector",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sing-in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/garbage-collector/signIn",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"garbage-collector",
+								"signIn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/garbage-collector/services",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"garbage-collector",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-bookings-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/garbage-collector/book/{{bookingId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"garbage-collector",
+								"book",
+								"{{bookingId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin-services",
+			"item": [
+				{
+					"name": "create-collectors",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 102,\r\n        \"name\": \"Kurt Angle\",\r\n        \"email\": \"kurt@gmail.com\",\r\n        \"contact\": \"9846285067\",\r\n        \"department\": \"Development Services\",\r\n        \"location\": \"Pune\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/employee-details/collectors",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"employee-details",
+								"collectors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-collector-by-id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 102,\r\n        \"name\": \"Kurt Angle\",\r\n        \"email\": \"kurt@gmail.com\",\r\n        \"contact\": \"9846285067\",\r\n        \"department\": \"Development Services\",\r\n        \"location\": \"Pune\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/employee-details/collectors/{{collectorId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"employee-details",
+								"collectors",
+								"{{collectorId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-collector-by-id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 102,\r\n        \"name\": \"Kurt Angle\",\r\n        \"email\": \"kurt@gmail.com\",\r\n        \"contact\": \"9846285067\",\r\n        \"department\": \"Development Services\",\r\n        \"location\": \"Pune\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/employee-details/collectors/{{collectorId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"employee-details",
+								"collectors",
+								"{{collectorId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-collector-by-id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 102,\r\n        \"name\": \"Kurt Angle\",\r\n        \"email\": \"kurt@gmail.com\",\r\n        \"contact\": \"9846285067\",\r\n        \"department\": \"Development Services\",\r\n        \"location\": \"Pune\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/employee-details/collectors/{{collectorId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"employee-details",
+								"collectors",
+								"{{collectorId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-collectors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 102,\r\n        \"name\": \"Kurt Angle\",\r\n        \"email\": \"kurt@gmail.com\",\r\n        \"contact\": \"9846285067\",\r\n        \"department\": \"Development Services\",\r\n        \"location\": \"Pune\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/employee-details/collectors",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"employee-details",
+								"collectors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-bookings",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/garbage-collector/bookings",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"garbage-collector",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-consumers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/garbage-collector/consumers",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"garbage-collector",
+								"consumers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-consumers-by-id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/garbage-collector/consumers{{consumerId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"garbage-collector",
+								"consumers{{consumerId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "localhost:8080",
+			"type": "default"
+		}
+	]
+}
