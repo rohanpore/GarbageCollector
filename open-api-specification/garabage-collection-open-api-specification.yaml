@@ -1,0 +1,514 @@
+openapi: 3.0.1
+info:
+  title: Consumer API to access garbage collection services
+  version: '3.14'
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /garbage-collector/collectors/{collectorId}:
+    get:
+      tags:
+        - admin-controller
+      operationId: getCollectorById
+      parameters:
+        - name: collectorId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Collector'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+    put:
+      tags:
+        - admin-controller
+      operationId: updateCollector
+      parameters:
+        - name: collectorId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collector'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+    delete:
+      tags:
+        - admin-controller
+      operationId: deleteCollector
+      parameters:
+        - name: collectorId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+  /garbage-collector/signUp:
+    post:
+      tags:
+        - consumer-controller
+      operationId: registerConsumer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Consumer'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+  /garbage-collector/signIn:
+    post:
+      tags:
+        - consumer-controller
+      operationId: loginConsumer
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+  /garbage-collector/collectors:
+    get:
+      tags:
+        - admin-controller
+      operationId: viewCollector
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Collector'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+    post:
+      tags:
+        - admin-controller
+      operationId: addCollector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Collector'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+  /garbage-collector/services:
+    get:
+      tags:
+        - consumer-controller
+      operationId: viewServices
+      responses:
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+        default:
+          description: Fetch services
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CollectionServices'
+  /garbage-collector/consumers:
+    get:
+      tags:
+        - admin-controller
+      operationId: viewConsumers
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Consumer'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+  /garbage-collector/consumers/{consumerId}:
+    get:
+      tags:
+        - admin-controller
+      operationId: getConsumerById
+      parameters:
+        - name: consumerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Consumer'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+  /garbage-collector/bookings:
+    get:
+      tags:
+        - admin-controller
+      operationId: getBookingDetails
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookingRequest'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+  /garbage-collector/book/{garbageType}/{garbageCapacity}:
+    get:
+      tags:
+        - consumer-controller
+      operationId: bookGarbageCollectionService
+      parameters:
+        - name: garbageType
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: Wet|Dry|Mix
+        - name: garbageCapacity
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+            maximum: 25
+            minimum: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookingResponse'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+  /garbage-collector/book/{bookingId}:
+    get:
+      tags:
+        - consumer-controller
+      operationId: viewBookingById
+      parameters:
+        - name: bookingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookingResponse'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        '404':
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+components:
+  schemas:
+    ErrorMessage:
+      type: object
+      properties:
+        message:
+          type: string
+        errorCode:
+          type: integer
+          format: int32
+    Collector:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          minLength: 1
+        contact:
+          type: string
+          pattern: ^\d{10}$
+        numberOfPickups:
+          type: integer
+          format: int32
+        status:
+          type: string
+      required:
+        - id
+        - name
+    Consumer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          minLength: 1
+        email:
+          type: string
+        contact:
+          type: string
+          pattern: ^\d{10}$
+        location:
+          type: string
+          pattern: Pune|Bangalore|Delhi|Kolkata
+      required:
+        - email
+        - id
+        - name
+    CollectionServices:
+      type: object
+      properties:
+        chargesPerKgs:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int32
+        requestURL:
+          type: string
+    BookingRequest:
+      type: object
+      properties:
+        booking_id:
+          type: integer
+          format: int32
+        garbageType:
+          type: string
+        capacity:
+          type: integer
+          format: int32
+        charges:
+          type: number
+          format: double
+        collector:
+          $ref: '#/components/schemas/Collector'
+        consumer:
+          $ref: '#/components/schemas/Consumer'
+    BookingResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        booking_id:
+          type: integer
+          format: int32
+        collector_name:
+          type: string
+        contact:
+          type: string
+        charges:
+          type: number
+          format: double

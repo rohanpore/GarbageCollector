@@ -50,8 +50,8 @@ public class AdminController {
     }
 
     @GetMapping(value="/collectors/{collectorId}")
-    public ResponseEntity<Collector> getCollectorById(@PathVariable Integer collectorID) {
-        return new ResponseEntity<>(collectorService.getCollectorById(collectorID), HttpStatus.FOUND);
+    public ResponseEntity<Collector> getCollectorById(@PathVariable Integer collectorId) {
+        return new ResponseEntity<>(collectorService.getCollectorById(collectorId), HttpStatus.FOUND);
     }
 
     @PutMapping(value="collectors/{collectorId}")

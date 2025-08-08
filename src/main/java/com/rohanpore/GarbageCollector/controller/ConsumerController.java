@@ -5,6 +5,9 @@ import com.rohanpore.GarbageCollector.model.CollectionServices;
 import com.rohanpore.GarbageCollector.model.Consumer;
 import com.rohanpore.GarbageCollector.services.CollectionService;
 import com.rohanpore.GarbageCollector.services.ConsumerService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -20,6 +23,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/garbage-collector")
 @Validated
+@OpenAPIDefinition(info =
+@Info(title = "Consumer API to access garbage collection services", version = "3.14"))
 public class ConsumerController {
 
     @Autowired
@@ -42,6 +47,7 @@ public class ConsumerController {
         return new ResponseEntity<>(responseMessage, HttpStatus.OK);
     }
 
+    @ApiResponse(description = "Fetch services")
     @GetMapping(value="/services")
     public ResponseEntity<List<CollectionServices>> viewServices() {
         return new ResponseEntity<>(collectionService.viewServices(), HttpStatus.OK);
